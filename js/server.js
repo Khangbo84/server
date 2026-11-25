@@ -137,7 +137,7 @@ document.querySelectorAll('[data-lang]').forEach(btn=>{
 /* ===============================
    DEFAULT
 ================================ */
-setLanguage('vi');
+/* setLanguage('vi') được gọi ở phần INIT bên dưới, sau khi banner đã khai báo */
 
 /* ===============================
    CONFIG (config.json)
@@ -152,7 +152,7 @@ const DEFAULT_CONFIG = {
 
 async function loadConfig(){
   try{
-    const res = await fetch('../config/config.json', { cache: 'no-cache' });
+    const res = await fetch('config.json', { cache: 'no-cache' });
     if(!res.ok) throw new Error(res.status);
     return await res.json();
   }catch(err){
@@ -307,28 +307,50 @@ window.addEventListener('pointerup', ()=>{
   }
 });
 
-/* Tự chuyển banner */
+/* Tự chuyển banner: chỉ chạy khi banner đang nằm trong màn hình */
+let autoEnabled = true;   // theo config
+let inView = false;       // banner đang hiện trong viewport
+let userPaused = false;   // đang rê chuột / chạm vào banner
+
 function stopAuto(){ clearInterval(autoTimer); autoTimer = null; }
-function startAuto(){
-  stopAuto();
-  if(bannerItems.length < 2) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  autoTimer = setInterval(()=> goTo(bannerIndex + 1), autoMs);
+
+function updateAuto(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const should = autoEnabled && inView && !userPaused && !document.hidden
+                 && !reduced && bannerItems.length > 1;
+  if(should && !autoTimer){
+    autoTimer = setInterval(()=> goTo(bannerIndex + 1), autoMs);
+  }else if(!should){
+    stopAuto();
+  }
 }
-let autoEnabled = true;
-['pointerenter','focusin','touchstart'].forEach(ev=> bannerEl.addEventListener(ev, stopAuto, { passive: true }));
-['pointerleave','focusout','touchend'].forEach(ev=> bannerEl.addEventListener(ev, ()=>{ if(autoEnabled) startAuto(); }, { passive: true }));
-document.addEventListener('visibilitychange', ()=>{ document.hidden ? stopAuto() : (autoEnabled && startAuto()); });
+
+['pointerenter','focusin','touchstart'].forEach(ev=>
+  bannerEl.addEventListener(ev, ()=>{ userPaused = true; updateAuto(); }, { passive: true }));
+['pointerleave','focusout','touchend','touchcancel'].forEach(ev=>
+  bannerEl.addEventListener(ev, ()=>{ userPaused = false; updateAuto(); }, { passive: true }));
+document.addEventListener('visibilitychange', updateAuto);
+
+if('IntersectionObserver' in window){
+  new IntersectionObserver(entries=>{
+    inView = entries[0].isIntersecting;
+    updateAuto();
+  }, { threshold: 0.4 }).observe(bannerEl);
+}else{
+  inView = true;
+}
 window.addEventListener('resize', ()=> bannerTrack.scrollTo({ left: bannerIndex * bannerTrack.clientWidth }));
 
 /* ===============================
    INIT
 ================================ */
+setLanguage('vi');
+
 loadConfig().then(cfg=>{
   applyLinks(cfg.links);
   const b = cfg.banner || {};
   autoEnabled = b.autoplay !== false;
   autoMs = Math.max(2000, Number(b.interval) || 5000);
   buildBanner(pickBanners(b.items));
-  if(autoEnabled) startAuto();
+  updateAuto();
 });
