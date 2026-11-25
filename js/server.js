@@ -152,7 +152,7 @@ const DEFAULT_CONFIG = {
 
 async function loadConfig(){
   try{
-    const res = await fetch('../config/config.json', { cache: 'no-cache' });
+    const res = await fetch('https://khangbo84.github.io/server/config/config.json', { cache: 'no-cache' });
     if(!res.ok) throw new Error(res.status);
     return await res.json();
   }catch(err){
