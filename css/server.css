@@ -213,23 +213,16 @@ a{ text-decoration:none; color:inherit; }
 /* ===============================
    EVENTS / BANNER CAROUSEL
 ================================ */
+/* Nền chung cho cả banner và join */
+.hero{
+  position:relative;
+  background:var(--main-bg) url("server_bg.png") center / cover no-repeat;
+}
 .events{
   position:relative;
-  padding:96px 20px 40px;
-  background:var(--main-bg);
-  overflow:hidden;
+  padding:96px 20px 0;
+  z-index:1;
 }
-.events-bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  z-index:0;
-  display:block;
-}
-.events > :not(.events-bg){ position:relative; z-index:10; }
 
 .banner{
   max-width:1100px;
@@ -276,7 +269,7 @@ a{ text-decoration:none; color:inherit; }
 .banner-caption{
   position:absolute;
   left:0; right:0; bottom:0;
-  padding:48px 24px 22px;
+  padding:48px 24px 72px;
   background:linear-gradient(180deg,transparent,rgba(3,6,23,.85));
   pointer-events:none;
 }
@@ -305,7 +298,7 @@ a{ text-decoration:none; color:inherit; }
 
 .banner-dots{
   position:absolute;
-  left:0; right:0; bottom:8px;
+  left:0; right:0; top:10px;
   display:flex;
   justify-content:center;
   gap:8px;
@@ -324,7 +317,7 @@ a{ text-decoration:none; color:inherit; }
 @media (max-width:768px){
   .events{ padding:76px 12px 24px; }
   .banner-slide{ aspect-ratio:16/9; }
-  .banner-caption{ padding:32px 14px 26px; }
+  .banner-caption{ padding:32px 14px 64px; }
   .banner-arrow{ display:none; }   /* mobile: vuốt tay */
 }
 
@@ -332,14 +325,23 @@ a{ text-decoration:none; color:inherit; }
    JOIN (Play + Discord)
 ================================ */
 .join{
-  background:var(--main-bg);
+  position:relative;
+  z-index:2;                      /* nổi trên banner */
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:28px;
-  padding:48px 20px 64px;
+  padding:0 20px 64px;
 }
-.title{ width:270px; height:auto; }
+/* Logo đè lên mép dưới banner, luôn ở giữa, kích thước cố định mọi màn hình */
+.join .title{
+  width:270px;
+  max-width:none;
+  height:auto;
+  flex:none;
+  margin-top:-60px;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.45));
+}
 .join-actions{
   display:flex;
   flex-wrap:wrap;
@@ -475,4 +477,4 @@ a{ text-decoration:none; color:inherit; }
 @media(max-width:900px){
   .section{flex-direction:column}
   .section img,.section video,.section .text{width:100%}
-}
+  }
