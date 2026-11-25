@@ -12,7 +12,7 @@
     "items": [
       {
         "enabled": true,
-        "image": "banners/banner1.svg",
+        "image": "../assets/banner/banner1.svg",
         "title": { "vi": "Kỷ niệm 3 năm MePhuHo", "en": "MePhuHo 3rd Anniversary" },
         "desc":  { "vi": "Sự kiện đặc biệt đang diễn ra!", "en": "A special event is live now!" },
         "link": "#",
@@ -22,7 +22,7 @@
       },
       {
         "enabled": true,
-        "image": "banners/banner2.svg",
+        "image": "../assets/banner/banner2.svg",
         "title": { "vi": "3 Mini Games mới", "en": "3 New Mini Games" },
         "desc":  { "vi": "Mê cung tử thần, Bùng phát ngược, Tháp phản bội", "en": "Death Maze, Reverse Outbreak, Traitor Tower" },
         "link": "#",
@@ -32,7 +32,7 @@
       },
       {
         "enabled": true,
-        "image": "banners/banner3.svg",
+        "image": "../assets/banner/banner3.svg",
         "title": { "vi": "Thử thách Hầm ngục", "en": "Dungeon Challenge" },
         "desc":  { "vi": "Đánh trùm, mang về chiến lợi phẩm", "en": "Beat the boss and claim the loot" },
         "link": "#",
