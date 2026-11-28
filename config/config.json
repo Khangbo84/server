@@ -12,7 +12,7 @@
     "items": [
       {
         "enabled": true,
-        "image": "../assets/banner/server-bg.png",
+        "image": "../assets/banner/server_bg.png",
         "title": { "vi": "Kỷ niệm 3 năm MePhuHo", "en": "MePhuHo 3rd Anniversary" },
         "desc":  { "vi": "Sự kiện đặc biệt đang diễn ra!", "en": "A special event is live now!" },
         "link": "#",
