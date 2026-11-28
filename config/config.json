@@ -11,13 +11,13 @@
     "interval": 5000,
     "items": [
       {
-        "image": "../assets/banner/server_bg.png",
+        "image": "./assets/banner/server_bg.png",
         "link": "#",
         "start": "",
         "end": ""
       },
       {
-        "image": "../assets/banner/banner2.png",
+        "image": "./assets/banner/banner2.svg",
         "link": "#",
         "start": "2026-01-01",
         "end": "2026-12-31"
