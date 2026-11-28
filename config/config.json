@@ -11,12 +11,16 @@
     "interval": 5000,
     "items": [
       {
-        "enabled": true,
         "image": "../assets/banner/server_bg.png",
         "link": "#",
-        "newTab": false,
         "start": "",
         "end": ""
+      },
+      {
+        "image": "../assets/banner/banner2.png",
+        "link": "#",
+        "start": "2026-01-01",
+        "end": "2026-12-31"
       }
     ]
   }
