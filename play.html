@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Play | MePhuHo Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Play | MePhuHo Team">
+<meta property="og:description" content="How to join the MePhuHo Team Minecraft Bedrock server.">
+<link rel="icon" type="image/png" href="./assets/favicon.png" sizes="64x64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/play.css">
+</head>
+
+<body>
+<header class="header">
+  <div class="header-inner">
+
+    <!-- LOGO -->
+    <a class="header-logo" href="./index.html">
+      <img src="./assets/title.png" alt="Server Logo">
+    </a>
+
+    <!-- MENU -->
+    <nav class="header-nav">
+      <a href="./play.html"><img src="./assets/play.png" alt="Play"></a>
+      <a href="./map.html"><img src="./assets/map.png" alt="Map"></a>
+      <a href="./games.html"><img src="./assets/game.png" alt="Games"></a>
+      <a href="./wiki.html"><img src="./assets/wiki.png" alt="Wiki"></a>
+
+      <button id="menuBtn" class="btn-menu" aria-label="Menu">
+        <div class="menu-icon"></div>
+      </button>
+    </nav>
+
+  </div>
+</header>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Side Panel -->
+<aside class="side-panel" id="sidePanel">
+  <div class="panel-header">
+    <h3 data-i18n="content">Nội dung</h3>
+  </div>
+
+  <div class="panel-content">
+    <a data-i18n="play"  class="panel-btn" href="./play.html">Chơi</a>
+    <a data-i18n="map"   class="panel-btn" href="./map.html">Bản đồ</a>
+    <a data-i18n="games" class="panel-btn" href="./games.html">Trò chơi</a>
+    <a data-i18n="wiki"  class="panel-btn" href="./wiki.html">Wiki</a>
+
+    <!-- Language -->
+    <div class="lang-box">
+      <button data-i18n="language" class="panel-btn" id="langToggle">Ngôn ngữ</button>
+
+      <div class="lang-dropdown" id="langDropdown">
+        <button data-i18n="en_lang" data-lang="en">Tiếng Anh</button>
+        <button data-i18n="vi_lang" data-lang="vi">Tiếng Việt</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- HERO IMAGE -->
+<section class="play-hero">
+  <img id="heroImg" src="./assets/play/hero.png" alt="">
+</section>
+
+<!-- HOW TO JOIN (vàng nhạt) -->
+<section class="section how" id="how">
+  <h2 id="joinTitle">Cách tham gia</h2>
+
+  <div class="join-shot">
+    <img id="joinImg" src="./assets/play/server-info.png" alt="">
+    <div class="join-shot-fallback" id="joinFallback" hidden></div>
+  </div>
+
+  <p class="add-text" id="addText">Hoặc bấm vào đây để thêm server</p>
+  <a class="btn btn-add" id="addBtn" href="#">Thêm server</a>
+</section>
+
+<!-- Q&A (vàng đậm hơn) -->
+<section class="section faq" id="faq">
+  <h2 id="faqTitle">Hỏi & Đáp</h2>
+  <div class="faq-list" id="faqList"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="./assets/logo.png" alt="K Games Legends" class="footer-logo">
+    </div>
+    <div class="footer-team">
+      <img src="./assets/team.png" alt="MePhuHo Team">
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Links</h4>
+      <a href="#">PROJECT</a>
+      <a href="./wiki.html">Wiki</a>
+      <a href="#">FAQ</a>
+      <a href="#">FEEDBACK</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Page</h4>
+      <a data-i18n="play"  href="./play.html">Chơi</a>
+      <a data-i18n="map"   href="./map.html">Bản đồ</a>
+      <a data-i18n="games" href="./games.html">Trò chơi</a>
+      <a data-i18n="rule"  href="./wiki.html">Luật</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>About</h4>
+      <a data-i18n="terms" href="#">Điều khoản & Pháp lý</a>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    <p>©2026 <span>K GAMES LEGENDS</span>. ALL RIGHTS RESERVED.</p>
+  </div>
+
+  <div class="footer-social">
+    <a href="#"><i class="icon discord"></i></a>
+    <a href="#"><i class="icon youtube"></i></a>
+    <a href="#"><i class="icon mail"></i></a>
+    <a href="#"><i class="icon tiktok"></i></a>
+  </div>
+
+</footer>
+
+<script src="./js/play.js"></script>
+</body>
+</html>
